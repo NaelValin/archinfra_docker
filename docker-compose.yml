@@ -1,0 +1,30 @@
+services:
+  archinfra_front:
+    image: nv2thegod/archinfra_front:latest
+    container_name: archinfra_front
+    ports:
+      - "5173:5173"
+    depends_on:
+      - archinfra_back
+
+  archinfra_back:
+    image: nv2thegod/archinfra_back:latest
+    container_name: archinfra_back
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    image : mongo:latest
+    container_name: db
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
