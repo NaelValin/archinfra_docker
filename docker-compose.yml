@@ -8,6 +8,8 @@ services:
       - archinfra_back
     networks:
       - backend
+    environment:
+      - URL_BACKEND=${URL_BACKEND}
 
   archinfra_back:
     image: nv2thegod/archinfra_back:latest
