@@ -6,6 +6,8 @@ services:
       - "5173:5173"
     depends_on:
       - archinfra_back
+    networks:
+      - backend
 
   archinfra_back:
     image: nv2thegod/archinfra_back:latest
